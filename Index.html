@@ -1,0 +1,182 @@
+<head lang="ja">
+ <meta charset="UTF-8">
+　	<script id="dt" type="text/plain">次の場合にメモを検索</script>
+　	<script id="data" type="text/plain">アップデートされたテキスト</script>
+<script id="vertex-shader" type="x-shader/x-vertex">
+  attribute vec2 aVertexPosition;
+  uniform vec2 uScalingFactor;
+  uniform vec2 uRotationVector;
+  void main() {
+	vec2 rotatedPosition = vec2(
+	aVertexPosition.x * uRotationVector.y +
+	aVertexPosition.y * uRotationVector.x,
+	aVertexPosition.y * uRotationVector.y -
+	aVertexPosition.x * uRotationVector.x
+);
+	gl_Position = vec4(rotatedPosition * uScalingFactor, 0.0, 1.0);
+  }
+</script>
+<script id="fragment-shader" type="x-shader/x-fragment">
+	precision highp float;
+  uniform vec4 uGlobalColor;
+  void main() {
+	gl_FragColor = uGlobalColor;
+  }
+</script>
+<script>
+function GL1() {
+ let aspectRatio,currentRotation = [0, 1],currentScale = [1.0, 1.0];	// アスペクト比と座標系の詳細
+ let vertexArray,vertexBuffer,vertexNumComponents,vertexCount;	// 頂点情報
+ let uScalingFactor,uGlobalColor,uRotationVector,aVertexPosition;	// スケーラーと共有するデータをレンダリングする。
+ let qa=0.0,previousTime = 0.0,degreesPerSecond = 90.0;	// アニメーションのタイミング
+  glCanvas = document.getElementById("glcanvas");
+  gl = glCanvas.getContext("webgl");
+ function buildShaderProgram(shaderInfo) {
+  let program = gl.createProgram();
+  shaderInfo.forEach(function(desc) {
+	let shader = compileShader(desc.id, desc.type);
+	if (shader) {
+	gl.attachShader(program, shader);
+	}
+	});
+  gl.linkProgram(program)
+	if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+	console.log("Error linking shader program:");
+	console.log(gl.getProgramInfoLog(program));
+  }
+  return program;
+ }
+ function compileShader(id, type) {
+  let code = document.getElementById(id).firstChild.nodeValue;
+  let shader = gl.createShader(type);
+  gl.shaderSource(shader, code);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+	console.log(`Error compiling ${type === gl.VERTEX_SHADER ? "vertex" : "fragment"} shader:`);
+	console.log(gl.getShaderInfoLog(shader));
+  }
+  return shader;
+ }
+ function animateScene() {
+  gl.viewport(0, 0, glCanvas.width, glCanvas.height);
+  gl.clearColor(0.8, 0.9, 1.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  let radians = currentAngle * Math.PI / 180.0;
+  currentRotation[0] = Math.sin(radians);
+  currentRotation[1] = Math.cos(radians);
+  gl.useProgram(shaderProgram);
+  uScalingFactor =
+	gl.getUniformLocation(shaderProgram, "uScalingFactor");
+  uGlobalColor =
+	gl.getUniformLocation(shaderProgram, "uGlobalColor");
+  uRotationVector =
+	gl.getUniformLocation(shaderProgram, "uRotationVector");
+  gl.uniform2fv(uScalingFactor, currentScale);
+  gl.uniform2fv(uRotationVector, currentRotation);
+  gl.uniform4fv(uGlobalColor, [0.1, 0.7, 0.2, 1.0]);
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+  aVertexPosition =
+	gl.getAttribLocation(shaderProgram, "aVertexPosition");
+  gl.enableVertexAttribArray(aVertexPosition);
+  gl.vertexAttribPointer(aVertexPosition, vertexNumComponents,
+	gl.FLOAT, false, 0, 0);
+  gl.drawArrays(gl.TRIANGLES, 0, vertexCount);
+ 
+ }
+
+ function timer() {
+   window.requestAnimationFrame((currentTime) => { 
+       let t = currentTime - previousTime;
+        if (t > 20.0 ) 
+        {
+        let deltaAngle = t / 1000.0 * degreesPerSecond;
+	  currentAngle = (currentAngle + deltaAngle) % 360;
+	  previousTime = currentTime;
+         if ( Math.abs( qa- t ) >= 2.5 ) 
+          { document.querySelector('#qt2').textContent = t.toFixed(2) +'㎳' ; qa =t ; }
+	  animateScene();
+       }
+       timer();});
+    }
+
+  const shaderSet = [
+	{
+	type: gl.VERTEX_SHADER,
+	id: "vertex-shader"
+	},
+	{
+	type: gl.FRAGMENT_SHADER,
+	id: "fragment-shader"
+	}
+];
+  shaderProgram = buildShaderProgram(shaderSet);
+  aspectRatio = glCanvas.width/glCanvas.height;
+  currentRotation = [0, 1];
+  currentScale = [1.0, aspectRatio];
+  vertexArray = new Float32Array([
+	-0.5, 0.5, 0.5, 0.5, 0.5, -0.5,
+	-0.5, 0.5, 0.5, -0.5, -0.5, -0.5
+]);
+  vertexBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, vertexArray, gl.STATIC_DRAW);
+  vertexNumComponents = 2;
+  vertexCount = vertexArray.length/vertexNumComponents;
+  currentAngle = 0.0;
+  rotationRate = 6;
+  animateScene();timer();
+}
+window.addEventListener("load", GL1, false);
+var vv=function(i) {
+	//let weeks = ["Sun","Mon","Thu","Wed","Thr","Fri","Sat"];
+let now = new Date();
+  switch (i) {
+  case 0 :
+	return now.toLocaleDateString()+"日月火水木金土".substr(now.getDay(),1);
+  default:
+	return now.toLocaleTimeString();
+	}
+};
+var  tim1=function(){
+	document.querySelector('#svt').textContent = vv(1) ;
+};
+addEventListener('load', (event) => {
+let t0 =performance.now();
+let dt=document. querySelector('#dt').textContent;
+let data= document.querySelector('#data').textContent;
+let dta = '🈳は空白(" ")。\n';
+for(let k of dt.split("\n")){
+ let d = k.split('');	
+ dta += k.replace('','\t').replace(/ /g  , '🈳') +  '\n'  ; 
+ if (d[0] >= " " && d[1] != undefined)  {
+　//let d1 = d[1].split("\\\\").join("\\");
+	
+//if (k.includes(' ')) dta += k.replace('','\t').replace(/ /g  , '🈳') +  '\n'  ; 
+  data = data.replace(RegExp(d[0], 'gm') ,  d[1]);
+ }
+}
+  document.querySelector('#test').textContent = data.replace(/(<\/?)/gm ,  '$1script') ;
+  document.querySelector('#test1').textContent = dta ;
+ document.querySelector('#day').textContent = vv(0) ;
+ document.querySelector('#qt').textContent =(performance.now()- t0).toFixed(2) +'㎳' ;
+ tim1();
+ setInterval(tim1, 1000);
+});
+</script>
+</head>
+<body>
+ <h1 id = "qt"></h1>
+<svg id="svg1" width="300" height="260">
+  <rect width="100%" height="100%" fill="blue" />
+  <ellipse cx="50%" cy="50%" rx="110" ry="80"  stroke="red" stroke-width="1" fill="green">
+	<animate id="qy" attributeName="ry" values="80;20;80" dur="30s" begin="0s;click" restart ="never" repeatCount="1" />
+	<animate id="qx" attributeName="rx" values="110;20;110" dur="30s" begin="qy.begin + 12s" restart ="never" repeatCount="1" />
+  </ellipse>
+  <text id = "day" x="50%" y="25%" font-size="60" text-anchor="middle" dominant-baseline="middle" fill="white"></text>
+  <text id = "svt" x="50%" y="50%" font-size="60" text-anchor="middle"  dominant-baseline="central" fill="white"></text>
+  <text id = "qt2" x="50%" y="75%" font-size="60" text-anchor="middle"  dominant-baseline="central" fill="black"></text>
+</svg>
+  <textarea id="test1" style="tab-size: 35;" rows="18"  cols="30" readonly></textarea>
+<canvas id="glcanvas" width="300" height="240"></canvas>
+ <textarea id="test" rows="20" cols="90"></textarea>
+</body>
