@@ -1,0 +1,38 @@
+  *  {font-family: inherit;font-size: inherit;}
+  body {display:flex;flex-flow:row wrap;justify-content:stretch;font-family:initial;font-size:2vmin;}
+  svg,canvas,#wgl,#mes{margin:1%;}
+  table {border:solid 1px;border-collapse: collapse;overflow:scroll;font-size:90%;}
+  td, th  {border: solid 1px;text-align:center;white-space:pre-wrap;}
+  output {white-space:pre-wrap;}
+
+  #mes {flex:1 1 30vmin;flex-flow:column wrap;text-align:center;}
+  #svg1 {width:100%;height:35vmin;text-anchor:middle;dominant-baseline:middle;}
+  #Tim {font-size:200%;}
+
+  #T2 {color:indigo;}
+  #T3 {color:darkslateblue;}
+  #T4 {color:darkgreen;}
+  #T1 {color:midnightblue;}
+
+  #Kyu {color:darkgreen;}
+  #Tps {color:Navy;}
+  #wgl {position:relative;}
+  #glcanvas {width:60vmin;height:60vmin;cursor:crosshair;position:relative;}	/* for Firefox */
+  #wgl1 {z-index:1;position:absolute;left:0;top:0;}
+
+  #Htbl table {width:100%;}
+  #Htbl td:first-letter{color:purple;font-weight:bold;}
+  #Htbl .info {font-weight:bold;}
+
+  #Birth {flex-flow:column wrap;}
+
+  #Mout {max-width:100%;max-height:45em;overflow: scroll;resize:both;min-height:10%;min-width:10%;}
+  #Mout table{margin: 1% 5%;}
+
+  #Doc {display:flex;flex-flow:row wrap;}
+  #Doc0,#Doc1 {flex-flow:column wrap;}
+  #Txt,#reg {width:100%;height:45em;overflow: scroll;resize:both;min-height:10%;min-width:10%;}
+  #Rgtb td {text-align:left;}
+  .line {font-size: 90%;flex-flow:row wrap;}
+
+  .cmd { cursor:pointer;}

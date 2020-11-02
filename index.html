@@ -1,0 +1,325 @@
+<html lang="ja">
+<head>
+ <meta charset="UTF-8" name="viewport" content="width=device-width" />
+ <title>Cube</title>
+ <script src="script.js"></script>
+ <script src="Data.js"></script>
+ <script src="Data1.js" id="Itex"> ここの表は一般的なものではなく上下が逆様です。また陽隠遁の境目付近の九星の決め方も少し違えてあります。 </script>
+<link rel="stylesheet" href="style.css" /> 
+
+ <script id="Irg" type="text/plain">
+[\t\p{Zs}]+$	
+(\n){3,}	$1$1
+\p{Zs}{3}		
+
+3
+いく(つ|ら)	幾$1
+す[べぺ]て	全て
+いったん	一旦
+いっしょ	一緒
+いったい	一体
+([屡愈抑熟])(\1|々)	$1
+([色段次時中益元我木樹花山様神])\1	$1々
+しばしば	屡
+いろいろ	色々
+いよいよ	愈
+だんだん	段々
+つぎつぎ	次々
+ときどき	時々
+さまざま	様々
+そもそも	抑
+なかなか	中々
+ますます	益々
+もともと	元々
+われわれ	我々
+たちまち	忽ち
+つくづく	熟
+あいだ	間
+かたまり	塊
+きっかけ	切欠
+しくみ(?=[がだでとにのはもやを、。\s])	仕組
+ひとつ	一つ
+ひとり	一人
+ほしいまま	恣
+あらかじめ	予め
+まったく	全く
+しばらく	暫く
+ようやく	漸く
+はるか	遥か
+わずか	僅か
+たしか	確か
+すなわち	即ち
+むしろ	寧ろ
+もっぱら	専ら
+おそらく	恐らく
+(ちょうど|丁度)	調度
+やがて	軅
+たとえ	例え
+ことばかり	事ばかり
+(ことば|言葉)	詞
+ことわざ	諺
+はしご	梯
+わたく?し	私
+あたかも	恰も
+かつて	嘗て
+いろんな	色んな
+じつ(に|は)	実$1
+(いっそう|さらに)	更に
+しきりに	頻りに
+すでに	既に
+ついに	遂に
+とくに	特に
+つねに	常に
+ついで	序で
+おも(なlに)	主$1
+かかわらず	拘らず
+まこと	誠
+ことがら	事柄
+ことごとく	尽く
+ものすご(い|く)	物凄$1
+すご(い|く)	凄$1
+ひど(い|く)	酷$1
+やす(い|く)	易$1
+パーセント	%
+いずれ	何れ
+ほとんど	殆ど
+うち([かがだでとなにのはまもやを、。])	内$1
+たち([かがだでとなにのはまもやを、。])	達$1
+([^と])[ごこ]ろ([かがだでとにのはまもやよを、。])	$1頃$2
+とき([かがだでとにのはまもやよを、。])	時$1
+いま([かがだでとにのはもやよを、。]|まで)	今$1
+まま	侭
+ため([かだでにのもやよ、。])	為$1
+こと([かがだでとにのはへもやよを、。な」\s])	事$1
+だれ([かがだでとにのもを、。な])	誰$1
+ゆえ([、にの])	故$1
+ごと([、にの])	毎$1
+たび([、に])	度$1
+なに([かにのともよをせ])	何$1
+なん([かでとのら])	何$1
+ところ([^がで])	所$1
+まと([まめ])	纏$1
+あふれ	溢れ
+いただ([か-こい])	戴$1
+おこな([わい-おっ])	行$1
+おっしゃ([ら-ろっ])	仰$1
+くく([ら-ろっ])	括$1
+さかの[ぼぽ]([ら-ろっ])	遡$1
+したが([わい-おっ])	従$1
+ちな([ま-もん])	因$1
+つな([が-ごい])	繋$1
+はじ([か-こい])	弾$1
+ひず([ま-もん])	歪$1
+もたら([さ-そ])	齎$1
+もら([わい-おっ])	貰$1
+あなど([ら-ろっ])	侮$1
+わか([ら-ろっ])	判$1
+くださ([いっりれ])	下さ$1
+くらべ(?=(ない|た|て|ず|られ|る|れ|よ|、))	比べ
+
+ほか	他
+ほど	程
+など	等
+いまだ	未だ
+ふたたび	再び
+つもり	積り
+真[っん]	真
+すこし	少し
+たくさん	沢山
+もちろん	勿論
+ただし、	但し、
+なお、	尚、
+とともに	と共に
+[繰く]り(返|かえ)	繰返
+[子こ]ども	子供
+(あま|余)り	余
+ゼロ	０
+
+[お御]([蔭陰]|かげ)	賜
+最初	初め
+(だいたい|大体|おおむね|たいてい|おおよそ)	概ね
+およそ	凡そ
+(一人一人|一つ一つ|おのおの)	各
+それ?の為には	それには
+それ?の(為|ため)	それで
+([うくすつぬふむゆる])為には	$1には
+どのように(して)?	どう
+(こ|そ)のように	$1う
+(こ|そ|ど)(のような|ういう|ういった|うした)(?![、。!\s])	$1んな
+を?する事(が|([のもは]))(でき|出来)	$2でき
+う事[がのは](でき|出来)	え
+く事[がのは](でき|出来)	け
+ぐ事[がのは](でき|出来)	げ
+す事[がのは](でき|出来)	せ
+ず事[がのは](でき|出来)	ぜ
+つ事[がのは](でき|出来)	て
+づ事[がのは](でき|出来)	で
+ぬ事[がのは](でき|出来)	ね
+ぶ事[がのは](でき|出来)	べ
+む事[がのは](でき|出来)	め
+る事[がのは](でき|出来)	れ
+という(事|も?の)は	とは
+
+(非常に|とても)	迚も
+(もはや|最早)	もう
+必要で?ない	要らない
+必要な	要る
+プラスと?マイナス	±
+沢山(?![だで、。!\s])	多く
+
+4
+つづ([か-こい])	続$1
+はたら([か-こい])	働$1
+くぼ([ま-もん])	凹$1
+つか([ま-もん])	掴$1
+とげ([ら-ろっ])	遂げ$1
+つづ([ら-ろっ])	綴$1
+もど([ら-ろっ])	戻$1
+まも([ら-ろっ])	守$1
+とどま([ら-ろっ])	留ま$1
+
+あらわ([さ-そ])	現$1
+(解き)?ほぐ(?=[さ-そ])	解
+しゃべ([ら-ろっ])	喋$1
+わずら([わい-おっ])	煩$1
+すぐれ	優れ
+はずれ(?=(ない|た|て|ず|られ|る|れ|よ|、))	外れ
+とらえ	捉え
+あらわれ	現れ
+つかまえ	捕まえ
+
+やさし(?=[いくさ])	優し
+おびただし(?=[いくさ])	夥し
+やす(?=[いくさ])	易
+つつまし(?=[いくさ])	慎まし
+あまねく	普く
+まっすぐ	真直
+ただ	唯
+(おのずから|一人でに)	自ずと
+(みずから|自分(自身)?|自己)	自ら
+
+友だち	友
+たがい	互い
+ものごと	物事
+もつれ	縺れ
+真理	眞
+根源	源
+誰れ	誰
+工人	匠
+いにしえ	古
+おぼろげ?	朧
+ふいご	鞴
+生命	命
+
+^\n	
+(\n)(第.+?章)	$1$1$2
+^(第.+?章)	$0
+</script>
+</head>
+<body>
+ <section id="mes">
+  <svg id="svg1">
+	<rect id="sr" width="100%" height="100%" fill="blue" />
+	<ellipse class="cmd" cx="50%" cy="50%" rx="40%" ry="30%" stroke="red" stroke-width="1" fill="green">
+	 <animate id="qy" attributeName="ry" values="30%;5%;30%" dur="30s" begin="10s;click" restart="whenNotActive" repeatCount="1" />
+	 <animate id="qx" attributeName="rx" values="40%;5%;40%" dur="30s" begin="qy.begin + 12s" restart="whenNotActive" repeatCount="1" />
+	</ellipse>
+	<text id="Tim1" class="cmd" x="50%" y="10%" fill="gold"></text>
+	<text id="Ky" x="50%" y="20%" fill="gray"></text>
+	<text id="Km" x="50%" y="30%" fill="darkgray"></text>
+	<text id="Kd" x="50%" y="40%" fill="silver"></text>
+	<text id="Tim" class="cmd" x="50%" y="50%" dominant-baseline="central" fill="white"></text>
+	<text id="Kj" x="50%" y="60%" dominant-baseline="central" fill="lightsteelblue"></text>
+	<text id="Kyu" class="cmd" x="50%" y="80%" fill="aqua"></text>
+	<text id="T1" class="cmd" x="50%" y="90%" fill="violet"></text>
+  </svg>
+ </section>
+
+ <form id="Htbl" class="cmd">
+  <input type="date" name="day" />
+  <input type="time" name="time"/>
+  <table><caption>方位挨星卦月盤《北が上》<tr><td><td><td><tr><td><td class="info"><td><tr><td><td><td></table>
+  <table><caption>恒気法<tr><td><td><td><tr><td><td class="info"><td><tr><td><td><td></table>
+ </form>
+ <section id="wgl">
+  <section id="wgl1">
+   <label id="T4" class="cmd"></label>
+   <label id="T3" class="cmd"></label>
+   <label id="Tps" class="cmd"></label>
+  </section>
+  <canvas id="glcanvas"></canvas>
+ </section>
+
+ <form name="Birth" id="Birth">
+  <section class="line">
+	<input type="date" name="day" />
+	<input type="time" name="time"/>
+	<label>男性？<input type="checkbox" name="sex" checked/></label>
+	<button name="sub" formaction="https://docs.google.com/spreadsheets/d/1zSmHRenhggUkbS4ckWTj9S4-OZEGUudolm-f2NeZhB4/edit?usp=sharing" formtarget="_blank">別表</button>
+  </section>
+  <section id="Mout"></section>
+  <template id="Tpmi">
+	<section hidden>
+	 <output class="bt"></output>
+	 <table class="ktbl"><caption>月盤<tr><td><td><td><tr><td><td><td><tr><td><td><td></table>
+	 <table class="ktbl"><caption>日盤<tr><td><td><td><tr><td><td><td><tr><td><td><td></table>
+	 <table><tr><th>宮<th>傾向<th>卦<tr><th class="kdt"><td class="kdt"><td class="kdt"><tr class="snk"><th class="kdt"><td class="kdt"><td class="kdt"></table>
+	 <output class="dai"></output>
+	 <input type="range" class="yr" min="0" max="160" style="width:70%;"/>
+	 <table class="ktbl"><caption class="yrm"><tr><td><td><td><tr><td><td><td><tr><td><td><td></table>
+	</section>
+  </template>
+ </form>
+
+ <form name="Doc" id="Doc">
+  <section id="Doc0">
+	<section class="line" class="cmd">
+	 <label id="T2" name='ms' class="cmd">…ms</label>
+	 <label><input type="checkbox" name="beep" checked/>⍾</label>
+	 <button type="button" name="bt1" value="1">変換</button>
+	 <button type="button" name="bt1" value="2">数字</button>
+	 <button type="button" name="bt1" value="3">半角</button>
+	 <button type="button" name="bt1" value="4">全角</button>
+	 <button type="button" name="bt1" value="5">small</button>
+	 <button type="button" name="bt1" value="-1">↩</button>
+	 <select name="mu1">
+	  <option value="">📝
+	  <option value="6">save
+	  <option value="7">load
+	 </select>
+	</section>
+	<textarea name="Txt" id="Txt" rows="20"></textarea>
+  </section>
+
+  <section id="Doc1">
+
+	<section class="cmd" class="line">
+	 <select name="mu1">
+	  <option value="">📝
+	  <option value="13">☑
+	  <option value="10">↕1
+	  <option value="11">↕2
+	  <option value="12">↕3
+	  <option value="8">save
+	  <option value="9">load
+	 </select>
+	 <label><input type="checkbox" name="rgopt" value="u" checked/>u</label>
+	 <label><input type="checkbox" name="rgopt" value="g" checked/>g</label>
+	 <label><input type="checkbox" name="rgopt" value="m" checked/>m</label>
+	 <label><input type="checkbox" name="rgopt" value="s">s</label>
+	 <label><input type="checkbox" name="rgopt" value="i">i</label>
+	 <label><input type="checkbox" name="rgopt" value="y">y</label>
+	 <button form="Birth" formaction="https://docs.google.com/spreadsheets/d/1NMuV8AM_cVokApzGaghC5UYmeFfKylwAC11obMsTSIM/edit?usp=sharing" formtarget="_blank">シート</button>
+	</section>
+	<section id="reg">
+	 <table id="Rgtb" name="Rgtb" contenteditable="">
+	  <template id="Ttr">
+		<tr><td contenteditable="false" class="ins"><input class="dat" type="checkbox" checked/>ℹ<td class="dat"><td class="dat"></tr>
+	  </template>
+	 </table>
+	</section>
+  </section>
+ </form>
+
+</body>
+</html>
